@@ -215,3 +215,67 @@ header {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
 }
+
+/* ==========================================
+   📱 RESPONSIVIDADE – AJUSTES PARA CELULAR
+   ========================================== */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* coloca tudo em coluna */
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    overflow-y: auto; /* permite rolagem no celular */
+    padding: 25px;
+  }
+
+  header {
+    transform: none; /* remove deslocamento vertical */
+    margin-bottom: 30px;
+  }
+
+  .astro h1 {
+    font-size: 42px; /* título menor no celular */
+    line-height: 1.2;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 400px;
+    padding: 25px;
+    gap: 15px;
+  }
+
+  .container h2 {
+    font-size: 24px;
+  }
+
+  .campo-data {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  .botaoVerificar {
+    font-size: 22px;
+    padding: 10px 20px;
+  }
+}
+
+/* Ajuste extra para telas muito pequenas (ex: iPhone SE) */
+@media (max-width: 420px) {
+  .astro h1 {
+    font-size: 32px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .campo-data {
+    font-size: 18px;
+  }
+
+  .botaoVerificar {
+    font-size: 20px;
+  }
+}

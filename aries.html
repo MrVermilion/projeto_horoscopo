@@ -143,6 +143,71 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+
+    /* ==========================================
+   📱 RESPONSIVIDADE – AJUSTES PARA CELULAR
+   ========================================== */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column; /* imagem acima, texto abaixo */
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 10px;
+    height: auto; /* permite rolagem se precisar */
+    overflow-y: auto;
+  }
+
+  .imagem-lado-esquerdo {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 25px;
+  }
+
+  .conteudo-signo {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  .conteudo-signo h1 {
+    font-size: 34px;
+  }
+
+  .conteudo-signo .info {
+    font-size: 20px;
+  }
+
+  .conteudo-signo .descricao {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .botao-voltar {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+}
+
+/* Ajuste extra para telas menores (ex: iPhone SE, Galaxy S Mini) */
+@media (max-width: 480px) {
+  .imagem-lado-esquerdo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .conteudo-signo {
+    padding: 20px;
+  }
+
+  .conteudo-signo h1 {
+    font-size: 30px;
+  }
+
+  .conteudo-signo .descricao {
+    font-size: 17px;
+  }
+}
+
   </style>
 </head>
 
