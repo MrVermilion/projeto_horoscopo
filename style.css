@@ -1,0 +1,217 @@
+/* ==========================================
+   🌌 ESTILO GERAL DO SITE – PROJETO HORÓSCOPO
+   ========================================== */
+
+/* ======= FUNDO PRINCIPAL ======= */
+body {
+  /* Fundo com textura e brilho sutil inspirado no mapa astral */
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 40%), /* brilho leve no canto superior esquerdo */
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05), transparent 40%), /* brilho leve no canto inferior direito */
+    radial-gradient(circle at 50% 50%, #1a1f2e, #0b1120 90%); /* fundo principal: mistura de azul escuro com preto espacial */
+
+  min-height: 100vh; /* corpo ocupa toda a altura da janela */
+  display: flex; /* ativa o modo flexbox */
+  align-items: center; /* centraliza verticalmente */
+  justify-content: center; /* centraliza horizontalmente */
+  flex-direction: column; /* organiza elementos em coluna */
+  margin: 0; /* remove margens padrão */
+  font-family: 'Alumni Sans Pinstripe', sans-serif; /* fonte leve e elegante */
+  color: #fff; /* cor de texto padrão em branco */
+  overflow: hidden; /* impede barras de rolagem por animações */
+  position: relative; /* para posicionar as estrelas de fundo */
+  z-index: 0; /* Garante que o body fique acima do plano de fundo */  
+}
+
+/* ======= ESTRELAS FIXAS E PISCANDO ======= */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* cria várias pequenas estrelas fixas no fundo */
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 80% 30%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(2px 2px at 60% 60%, rgba(255, 255, 255, 0.3), transparent);
+  background-repeat: no-repeat;
+  animation: twinkle 4s infinite ease-in-out alternate; /* pisca suavemente */
+  pointer-events: none; /* impede que afete cliques */
+}
+
+/* Animação das estrelas piscando */
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* ======= CABEÇALHO ======= */
+header {
+  text-align: center; /* centraliza o conteúdo do cabeçalho */
+  transform: translateY(-65px); /* move o cabeçalho levemente para cima */
+}
+
+/* ======= TÍTULO PRINCIPAL ======= */
+.astro h1 {
+  position: relative; /* necessário para o ::before */
+  color: transparent; /* torna o texto transparente para o background-clip */
+  font-size: 80px; /* tamanho grande do título */
+  text-align: center; /* centraliza o texto */
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px; /* espaçamento entre letras */
+
+  /* Efeito dourado em faixas diagonais */
+  background: repeating-linear-gradient(
+    var(--shadow-rotate),
+    var(--shadow-color),
+    var(--shadow-color) var(--shadow-stroke),
+    transparent var(--shadow-stroke),
+    transparent calc(var(--shadow-stroke) * var(--shadow-stroke-gap))
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 1px transparent;
+
+  /* Brilho dourado em volta */
+  text-shadow:
+    0 0 12px rgba(212, 175, 55, 0.3),
+    0 0 25px rgba(255, 215, 0, 0.2);
+}
+
+/* Sombra de texto em camadas – efeito 3D dourado */
+.astro h1::before {
+  content: "O que os Astros falam sobre você?"; /* repete o texto */
+  position: absolute;
+  color: transparent;
+  background: var(--color);
+  -webkit-text-stroke: 1px #d4af37; /* traço dourado */
+  left: -4px; /* desloca para criar profundidade */
+  top: -4px;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* ======= CONTAINER CENTRAL ======= */
+.container {
+  background: linear-gradient(145deg, rgba(25, 29, 45, 0.9), rgba(17, 22, 35, 0.95)); /* fundo levemente translúcido */
+  border: 1px solid rgba(212, 175, 55, 0.3); /* borda dourada sutil */
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow:
+    0 0 25px rgba(212, 175, 55, 0.15),
+    inset 0 0 20px rgba(212, 175, 55, 0.05); /* brilho dourado interno */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* espaço entre elementos */
+  width: 375px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(10px); /* efeito vidro fosco */
+  animation: fadeIn 1s ease; /* animação suave de entrada */
+}
+
+/* ======= SUBTÍTULO ======= */
+.container h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #f8e29f; /* dourado claro */
+  text-shadow: 0 0 6px rgba(255, 239, 184, 0.6); /* brilho dourado suave */
+}
+
+/* ======= CAMPO DE DATA ======= */
+.campo-data {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  text-align: center;
+  background-color: rgba(25, 29, 45, 0.8); /* fundo escuro translúcido */
+  color: #f0eef3;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); /* brilho dourado */
+  transition: all 0.3s ease;
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Animação quando o usuário passa o mouse ou clica */
+.campo-data:hover,
+.campo-data:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  cursor: pointer;
+}
+
+/* ======= BOTÃO ======= */
+.botaoVerificar {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #d4af37, #b48b2a); /* dourado metálico */
+  color: #0b1120; /* texto escuro para contraste */
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Efeito hover do botão */
+.botaoVerificar:hover {
+  background: linear-gradient(135deg, #e5c04a, #f5d56e); /* dourado mais claro */
+  box-shadow:
+    0 6px 15px rgba(255, 215, 0, 0.4),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* Efeito quando o botão é clicado */
+.botaoVerificar:active {
+  background: linear-gradient(135deg, #b48b2a, #8a6b20);
+  box-shadow: 0 2px 5px rgba(79, 70, 229, 0.2);
+  transform: scale(0.98);
+}
+
+/* ======= ANIMAÇÕES GERAIS ======= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======= CAMADA DE ESTRELAS EM MOVIMENTO ======= */
+#estrelas {
+   position: fixed; /* Fica preso à janela, não ao body */
+  top: 0;
+  left: 0;
+  width: 100vw; /* garante que ocupe toda a largura da janela */
+  height: 100vh; /* garante altura total da janela */
+  overflow: hidden;
+  z-index: 0; /* igual ou menor que o body */
+  pointer-events: none; /* não bloqueia cliques */
+}
+
+/* Cada estrela individual criada via JavaScript */
+.estrela {
+  position: absolute;
+  background: white;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: brilhar 2s infinite ease-in-out;
+}
+
+/* Animação das estrelas "piscando" */
+@keyframes brilhar {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
