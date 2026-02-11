@@ -10,23 +10,19 @@
     --preto-espacial: #0b1120;
 }
 
-/* ======= FUNDO E CORPO ======= */
+/* ======= CORPO DO SITE ======= */
 body {
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05), transparent 40%),
-        radial-gradient(circle at 50% 50%, var(--azul-profundo), var(--preto-espacial) 90%);
-    
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; /* Padrão para Index */
-    margin: 0;
-    font-family: 'Alumni Sans Pinstripe', sans-serif;
-    color: #fff;
-    overflow-x: hidden;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Garante que o corpo ocupe a altura toda da tela */
+  display: flex;
+  align-items: center;     /* Centraliza verticalmente */
+  justify-content: center;  /* Centraliza horizontalmente */
+  flex-direction: column; 
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  color: #fff;
+  background: radial-gradient(circle at 50% 50%, #1a1f2e, #0b1120 90%);
+  overflow-x: hidden;
 }
 
 /* Estrelas do fundo (Pseudo-elemento) */
@@ -84,13 +80,17 @@ h1 {
 
 .container { width: 375px; } /* Ajuste específico para a index */
 
-/* Layout das páginas de Signo (Lado a Lado) */
+/* ======= CONTAINER DOS SIGNOS ======= */
 .layout-signo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
-    z-index: 1;
+  display: flex;
+  flex-direction: row;      /* Imagem e Texto lado a lado no PC */
+  align-items: center;      /* Alinha os dois pela metade */
+  justify-content: center;  /* Mantém o par no centro da tela */
+  gap: 50px;                /* Espaço entre a imagem e o texto */
+  width: 100%;
+  max-width: 1200px;        /* Impede que fique largo demais em monitores grandes */
+  padding: 20px;
+  z-index: 1;
 }
 
 .imagem-lado-esquerdo {
@@ -139,4 +139,13 @@ h1 {
     h1 { font-size: 42px; }
     .imagem-lado-esquerdo { width: 250px; height: 250px; }
     .container { width: 90%; }
+}
+
+/* ======= RESPONSIVIDADE (PARA CELULAR) ======= */
+@media (max-width: 900px) {
+  .layout-signo {
+    flex-direction: column; /* No celular, volta a ser um em cima do outro */
+    text-align: center;
+    gap: 20px;
+  }
 }
