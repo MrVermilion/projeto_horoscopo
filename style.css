@@ -1,151 +1,189 @@
 /* ==========================================
-   🌌 ESTILO UNIFICADO – PROJETO HORÓSCOPO
+    🌌 ESTILO UNIFICADO – PROJETO HORÓSCOPO
    ========================================== */
 
-/* ======= VARIÁVEIS ======= */
 :root {
-    --dourado: #d4af37;
-    --dourado-brilho: #f8e29f;
-    --azul-profundo: #1a1f2e;
-    --preto-espacial: #0b1120;
+  --dourado: #d4af37;
+  --dourado-brilho: #f8e29f;
+  --azul-profundo: #1a1f2e;
+  --preto-espacial: #0b1120;
+}
+
+/* 1. RESET GLOBAL - O segredo da centralização perfeita */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Garante que padding não aumente o tamanho real da caixa */
 }
 
 /* ======= CORPO DO SITE ======= */
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh; /* Garante que o corpo ocupe a altura toda da tela */
+  width: 100%;
+  height: 100vh;
   display: flex;
-  align-items: center;     /* Centraliza verticalmente */
-  justify-content: center;  /* Centraliza horizontalmente */
-  flex-direction: column; 
-  font-family: 'Alumni Sans Pinstripe', sans-serif;
-  color: #fff;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente no eixo principal (coluna) */
   background: radial-gradient(circle at 50% 50%, #1a1f2e, #0b1120 90%);
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  color: #fff;
   overflow-x: hidden;
+}
+
+/* 2. LAYOUT DA HOME (index.html) */
+.home-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espaço exato entre o título e a caixa */
 }
 
 /* Estrelas do fundo (Pseudo-elemento) */
 body::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-        radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.6), transparent),
-        radial-gradient(1px 1px at 80% 30%, rgba(255, 255, 255, 0.4), transparent);
-    animation: twinkle 4s infinite ease-in-out alternate;
-    pointer-events: none;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 80% 30%, rgba(255, 255, 255, 0.4), transparent);
+  animation: twinkle 4s infinite ease-in-out alternate;
+  pointer-events: none;
+  z-index: -1;
 }
 
-@keyframes twinkle { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 /* ======= COMPONENTES DE TEXTO ======= */
 h1 {
-    font-size: 80px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-align: center;
-    color: var(--dourado-brilho);
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    margin: 0;
+  font-size: clamp(40px, 8vw, 80px); /* Tamanho responsivo */
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+  color: var(--dourado-brilho);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  margin-bottom: 30px; /* Espaço controlado entre o título e a caixa */
+  padding: 0 20px;
 }
 
-.info {
-    font-size: 22px;
-    color: #ffdf91;
-    text-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
-}
-
-.descricao {
-    font-size: 20px;
-    line-height: 1.5;
-    margin-bottom: 25px;
+h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #f8e29f;
 }
 
 /* ======= CONTAINERS ======= */
-
-/* Container da Index e das Páginas de Signos */
-.container, .conteudo-signo {
-    background: linear-gradient(145deg, rgba(25, 29, 45, 0.9), rgba(17, 22, 35, 0.95));
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    animation: fadeIn 1s ease;
+.container,
+.conteudo-signo {
+  background: linear-gradient(
+    145deg,
+    rgba(25, 29, 45, 0.9),
+    rgba(17, 22, 35, 0.95)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  animation: fadeIn 1s ease;
+  width: 100%;
+  max-width: 400px; /* Define largura máxima no PC */
 }
 
-.container { width: 375px; } /* Ajuste específico para a index */
-
-/* ======= CONTAINER DOS SIGNOS ======= */
+/* ======= CONTAINER DOS SIGNOS (Página signo.html) ======= */
 .layout-signo {
   display: flex;
-  flex-direction: row;      /* Imagem e Texto lado a lado no PC */
-  align-items: center;      /* Alinha os dois pela metade */
-  justify-content: center;  /* Mantém o par no centro da tela */
-  gap: 50px;                /* Espaço entre a imagem e o texto */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
   width: 100%;
-  max-width: 1200px;        /* Impede que fique largo demais em monitores grandes */
+  max-width: 1200px;
   padding: 20px;
   z-index: 1;
 }
 
 .imagem-lado-esquerdo {
-    width: 375px;
-    height: 375px;
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.9) drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
+  width: 350px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.9) drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
 }
 
 /* ======= BOTÕES E INPUTS ======= */
-.botaoVerificar, .botao-voltar, .campo-data {
-    font-family: 'Alumni Sans Pinstripe', sans-serif;
-    border-radius: 8px;
-    border: none;
-    transition: all 0.3s ease;
+.botaoVerificar,
+.botao-voltar,
+.campo-data {
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.botaoVerificar, .botao-voltar {
-    padding: 12px 25px;
-    background: linear-gradient(135deg, #d4af37, #b48b2a);
-    color: #0b1120;
-    font-size: 25px;
-    font-weight: 600;
-    cursor: pointer;
+.botaoVerificar,
+.botao-voltar {
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #d4af37, #b48b2a);
+  color: #0b1120;
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.botaoVerificar:hover, .botao-voltar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+.botaoVerificar:hover,
+.botao-voltar:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 .campo-data {
-    padding: 8px 15px;
-    font-size: 25px;
-    background: rgba(25, 29, 45, 0.8);
-    color: #fff;
-    text-align: center;
+  padding: 12px;
+  font-size: 22px;
+  background: rgba(25, 29, 45, 0.8);
+  color: #fff;
+  text-align: center;
 }
 
-/* ======= ANIMAÇÕES E RESPONSIVIDADE ======= */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
-
-@media (max-width: 900px) {
-    .layout-signo { flex-direction: column; padding: 20px; }
-    h1 { font-size: 42px; }
-    .imagem-lado-esquerdo { width: 250px; height: 250px; }
-    .container { width: 90%; }
+/* ======= ANIMAÇÕES ======= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ======= RESPONSIVIDADE (PARA CELULAR) ======= */
+/* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
   .layout-signo {
-    flex-direction: column; /* No celular, volta a ser um em cima do outro */
+    flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 30px;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .imagem-lado-esquerdo {
+    width: 250px;
+    height: 250px;
   }
 }

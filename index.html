@@ -1,66 +1,32 @@
-<!DOCTYPE html>
-<!-- Define que o documento está no formato HTML5 -->
+<!doctype html>
 <html lang="pt-br">
-<!-- Define o idioma principal da página como português do Brasil -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Horóscopo</title>
 
-<head>
-  <meta charset="UTF-8">
-  <!-- Garante que caracteres acentuados (como ç, á, ã) apareçam corretamente -->
+    <link rel="stylesheet" href="style.css" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Faz o layout se ajustar automaticamente a qualquer tela (celular, tablet, PC) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <title>Projeto Horóscopo</title>
-  <!-- Título que aparece na aba do navegador -->
+  <body>
+    <div id="estrelas"></div>
 
-  <link rel="stylesheet" href="style.css">
-  <!-- Importa o arquivo de estilos CSS externo (onde está toda a parte visual) -->
-
-  <!-- Fonte fina e sofisticada para o tema místico -->
-  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe&display=swap" rel="stylesheet">
-  <!-- Essa linha importa a fonte "Alumni Sans Pinstripe" do Google Fonts -->
-  
-</head>
-
-<body>
-  <!-- Corpo da página: onde fica todo o conteúdo visível -->
-
-  <div id="estrelas"></div>
-  <!-- Div para o efeito de estrelas no fundo -->
-  
-  <header>
-    <!-- Cabeçalho principal da página -->
-
-
-
-    <div class="astro">
-      <!-- Div responsável pelo título principal -->
+    <main class="home-layout">
       <h1>O que os Astros falam sobre você?</h1>
-      <!-- Título principal da página -->
-    </div>
+      <div class="container">
+        <h2>Qual a sua data de nascimento?</h2>
+        <input type="date" id="dataNascimento" class="campo-data" />
+        <button class="botaoVerificar">Consulte o seu Signo</button>
+      </div>
+    </main>
 
-    <div class="container">
-      <!-- Container central com o conteúdo principal (pergunta, campo e botão) -->
-
-      <h2>Qual a sua data de nascimento?</h2>
-      <!-- Subtítulo com a pergunta principal -->
-
-      <input type="date" id="dataNascimento" name="dataNascimento" class="campo-data">
-      <!-- Campo para o usuário selecionar a data de nascimento -->
-      <!-- type="date": cria um seletor de data -->
-      <!-- id="dataNascimento": identifica o campo no JavaScript -->
-      <!-- name="dataNascimento": usado em formulários -->
-      <!-- class="campo-data": aplica o estilo definido no CSS -->
-
-      <button class="botaoVerificar">Consulte o seu Signo</button>
-      <!-- Botão que, ao ser clicado, executará o código JavaScript -->
-    </div>
-  </header>
-
-  <script src="script.js"></script>
-  <!-- Importa o arquivo JavaScript externo (onde está a lógica do signo) -->       
-</body>
-<!-- Fecha o corpo do documento -->
-
+    <script src="script.js"></script>
+  </body>
 </html>
-<!-- Fecha a estrutura principal da página -->
